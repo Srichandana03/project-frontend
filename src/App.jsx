@@ -4,8 +4,11 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
+import Reg from './Reg'   // 🔹 IMPORT YOUR REGISTER FORM
+
 function Home() {
   const [count, setCount] = useState(0)
+
   return (
     <>
       <div>
@@ -16,35 +19,22 @@ function Home() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
+
       <h1>Vite + React</h1>
+
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
-  )
-}
-
-function Register() {
-  return (
-    <div style={{ textAlign: 'center', marginTop: '50px' }}>
-      <h1>I am reg</h1>
-      <Link to="/">Back to Home</Link>
-    </div>
   )
 }
 
 function Help() {
   return (
     <div style={{ textAlign: 'center', marginTop: '50px' }}>
-      <h1>I am app</h1>
+      <h1>Help Page</h1>
       <Link to="/">Back to Home</Link>
     </div>
   )
@@ -58,9 +48,13 @@ export default function App() {
         <Link to="/reg" style={{ marginRight: '20px' }}>Register</Link>
         <Link to="/h">Help</Link>
       </nav>
+
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/reg" element={<Register />} />
+
+        {/* 🔹 USE YOUR Reg.jsx COMPONENT HERE */}
+        <Route path="/reg" element={<Reg />} />
+
         <Route path="/h" element={<Help />} />
       </Routes>
     </>

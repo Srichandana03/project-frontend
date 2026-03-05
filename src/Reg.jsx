@@ -19,7 +19,7 @@ function Reg()
         {
             //const res=await axiox.post("http://localhost:5000/reg",data)
             const res=await axios.post(
-                "http://localhost:5000/reg",
+                "https://project-backend-xom8.onrender.com/register";
                 data
             )
             alert(res.data)

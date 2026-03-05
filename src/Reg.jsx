@@ -1,43 +1,44 @@
-import axios from "axios"; 
+import axios from "axios";
 import { useState } from "react";
-function Reg()
-{
-    const [data,setData]=useState(
-        {
-            username:"",
-            email:"",
-            password:""     
-        }
-    )
-    const changeName=(e)=>
-    {
-        setData({...data,[e.target.name]:e.target.value})
+
+function Reg() {
+
+  const [data,setData] = useState({
+    username:"",
+    email:"",
+    password:""
+  });
+
+  const changeName=(e)=>{
+    setData({...data,[e.target.name]:e.target.value})
+  }
+
+  const submit=async()=>{
+    try{
+      const res=await axios.post(
+        "https://project-backend-xom8.onrender.com/register",
+        data
+      )
+      alert(res.data)
     }
-    const submit=async()=>
-    {
-        try
-        {
-            //const res=await axiox.post("http://localhost:5000/reg",data)
-            const res=await axios.post(
-                "https://project-backend-xom8.onrender.com/register";
-                data
-            )
-            alert(res.data)
-        }
-        catch(xyz)
-        {
-            //alert(xyz.response.data)
-            alert(xyz.response?.data||"Error")
-        }
+    catch(xyz){
+      alert(xyz.response?.data || "Error")
     }
-    return(
-        <>
-            <h1>Iam App...</h1>
-            <input onChange={changeName} name="username" placeholder="Username"/><br/>
-            <input onChange={changeName} name="email" placeholder="Email"/><br/>
-            <input onChange={changeName} name="password" placeholder="Password"/><br/>
-            <button onClick={submit}>register</button>
-        </>
-    )
+  }
+
+  return(
+    <>
+      <h1>Register</h1>
+
+      <input onChange={changeName} name="username" placeholder="Username"/><br/><br/>
+
+      <input onChange={changeName} name="email" placeholder="Email"/><br/><br/>
+
+      <input onChange={changeName} name="password" placeholder="Password"/><br/><br/>
+
+      <button onClick={submit}>Register</button>
+    </>
+  )
 }
+
 export default Reg;
